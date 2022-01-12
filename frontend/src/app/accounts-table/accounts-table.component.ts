@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {TableModule} from 'primeng/table';
+import { Account } from '../accounts';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-accounts-table',
@@ -9,7 +10,7 @@ import {TableModule} from 'primeng/table';
 })
 
 export class AccountsTableComponent implements OnInit {
-  accounts: any;
+  accounts: Account[];
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +18,7 @@ export class AccountsTableComponent implements OnInit {
     const requestOptions: Object = {
       responseType: 'json'
     }
-    this.http.get<any>('http://localhost:3000/accounts', requestOptions).subscribe((data) => {
+    this.http.get<any>(`${environment.apiUrl}/accounts`, requestOptions).subscribe((data) => {
       this.accounts = data;
     });
   }

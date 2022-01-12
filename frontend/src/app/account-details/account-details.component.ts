@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import {TableModule} from 'primeng/table';
+import { Account } from '../accounts';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
-  selector: 'app-account-id-table',
-  templateUrl: './account-id-table.component.html',
-  styleUrls: ['./account-id-table.component.css']
+  selector: 'app-account-details',
+  templateUrl: './account-details.component.html',
+  styleUrls: ['./account-details.component.css']
 })
-export class AccountIdTableComponent implements OnInit {
-  accounts: any;
+
+export class AccountDetailsComponent implements OnInit {
+  accounts: Account[];
   id: number | undefined;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) { }
@@ -19,7 +22,7 @@ export class AccountIdTableComponent implements OnInit {
     const requestOptions: Object = {
       responseType: 'json'
     }
-    this.http.get<any>(`http://localhost:3000/accounts/${this.id}`, requestOptions).subscribe((data) => {
+    this.http.get<any>(`${environment.apiUrl}/accounts/${this.id}`, requestOptions).subscribe((data) => {
       this.accounts = data;
     });
   }
