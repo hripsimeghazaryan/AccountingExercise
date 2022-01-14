@@ -5,16 +5,68 @@
         <p>New Account</p>
     </ng-template>
     <ng-template pTemplate="body">
-        <div *ngFor="let item of newAccount | keyvalue">
+        <!-- <div *ngFor="let item of newAccount | keyvalue">
             <span>
                 <label>{{item.key}}</label>
             </span>
             <span>
                 <input id="float-input" type="text"
-                (change)="onValueChange(item)"
                 [(ngModel)]="item.value" pInputText> 
             </span>
-        </div>
+        </div> -->
+        <form [formGroup]="account">
+            <span>
+                <label for="account-id">Account Id</label>
+                <input id="account-id" type="number" formControlName="accountId">
+            </span>
+
+            <span>
+                <label for="created-at">Created At</label>
+                <input id="created-at" type="date" formControlName="createdAt">
+            </span>
+
+            <span>
+                <label for="id">ID</label>
+                <input id="id" type="number" formControlName="id">
+            </span>
+
+            <span>
+                <label for="owner">Owner</label>
+                <input id="owner" type="text" formControlName="owner">
+            </span>
+
+            <!-- To be reviewed -->
+            <span>
+                <label for="published">Published</label>
+                <input id="published" type="text" formControlName="published">
+            </span>
+
+            <span>
+                <label for="revenue">Revenue</label>
+                <input id="revenue" type="number" formControlName="revenue">
+            </span>
+
+            <span>
+                <label for="spend">Spend</label>
+                <input id="spend" type="number" formControlName="spend">
+            </span>
+
+            <span>
+                <label for="title">Title</label>
+                <input id="title" type="text" formControlName="title">
+            </span>
+
+            <span>
+                <label for="updated-at">Updated At</label>
+                <input id="updated-at" type="date" formControlName="updatedAt">
+            </span>
+
+            <span>
+                <label for="views">Views</label>
+                <input id="views" type="number" formControlName="views">
+            </span>
+
+        </form>
     </ng-template>
     <ng-template pTemplate="footer">
         <p-button (click)="closeModal()">Submit</p-button>

@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Accounts } from '../accounts';
+import { Account } from '../accounts';
+
+import { FormGroup, FormControl, FormControlName } from '@angular/forms';
 
 @Component({
   selector: 'app-add-account',
@@ -11,11 +13,21 @@ import { Accounts } from '../accounts';
 export class AddAccountComponent implements OnInit {
 
   showModal: boolean;
-  newAccount: any;
 
-  constructor(private http: HttpClient) {
-    this.newAccount = new Accounts();
-  }
+  account = new FormGroup({
+    accountId: new FormControl(''),
+    createdAt: new FormControl(''),
+    id: new FormControl(''),
+    owner: new FormControl(''),
+    published: new FormControl(''),
+    revenue: new FormControl(''),
+    spend: new FormControl(''),
+    title: new FormControl(''),
+    updatedAt: new FormControl(''),
+    views: new FormControl('')
+  })
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void { }
 
@@ -24,14 +36,10 @@ export class AddAccountComponent implements OnInit {
   }
 
   closeModal() {
-    this.http.post(`${environment.apiUrl}/accounts`, this.newAccount).subscribe(
-      (response) => console.log(response),
+    this.http.post(`${environment.apiUrl}/accounts`, this.account.value).subscribe(
+      (response) => console.log(response), //stex stanuma full datan
       (error) => console.log(error)
     );
     this.showModal = false;
-  }
-
-  onValueChange(item) {
-    this.newAccount[item.key] = item.value
   }
 }
