@@ -39,9 +39,12 @@ export class AddAccountComponent implements OnInit {
 
   closeModal() {
     this.http.post(`${environment.apiUrl}/accounts`, <Account> this.account.value).subscribe(
-      (response) => this.newAccount.emit(response),
+      (response) => {
+        this.newAccount.emit(response)
+        this.showModal = false;
+        this.account.reset();
+      },
       (error) => console.log(error)
     );
-    this.showModal = false;
   }
 }

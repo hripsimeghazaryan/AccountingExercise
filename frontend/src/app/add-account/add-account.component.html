@@ -8,52 +8,52 @@
         <form [formGroup]="account">
             <span>
                 <label for="account-id">Account Id</label>
-                <input id="account-id" type="number" formControlName="accountId">
+                <input id="account-id" type="number" formControlName="accountId" pInputText>
             </span>
 
             <span>
                 <label for="created-at">Created At</label>
-                <input id="created-at" type="date" formControlName="createdAt">
+                <input id="created-at" type="date" formControlName="createdAt" pInputText>
             </span>
 
             <span>
                 <label for="id">ID</label>
-                <input id="id" type="number" formControlName="id">
+                <input id="id" type="number" formControlName="id" pInputText>
             </span>
 
             <span>
                 <label for="owner">Owner</label>
-                <input id="owner" type="text" formControlName="owner">
+                <input id="owner" type="text" formControlName="owner" pInputText>
             </span>
 
             <span>
                 <label for="published">Published</label>
-                <input id="published" type="text" formControlName="published">
+                <input id="published" type="checkbox" formControlName="published">
             </span>
 
             <span>
                 <label for="revenue">Revenue</label>
-                <input id="revenue" type="number" formControlName="revenue">
+                <input id="revenue" type="number" formControlName="revenue" pInputText>
             </span>
 
             <span>
                 <label for="spend">Spend</label>
-                <input id="spend" type="number" formControlName="spend">
+                <input id="spend" type="number" formControlName="spend" pInputText>
             </span>
 
             <span>
                 <label for="title">Title</label>
-                <input id="title" type="text" formControlName="title">
+                <input id="title" type="text" formControlName="title" pInputText>
             </span>
 
             <span>
                 <label for="updated-at">Updated At</label>
-                <input id="updated-at" type="date" formControlName="updatedAt">
+                <input id="updated-at" type="date" formControlName="updatedAt" pInputText>
             </span>
 
             <span>
                 <label for="views">Views</label>
-                <input id="views" type="number" formControlName="views">
+                <input id="views" type="number" formControlName="views" pInputText>
             </span>
         </form>
     </ng-template>
