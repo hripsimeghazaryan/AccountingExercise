@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Account } from '../accounts';
 
@@ -14,6 +14,8 @@ export class AddAccountComponent implements OnInit {
 
   showModal: boolean;
 
+  @Output() newAccount: EventEmitter<any> = new EventEmitter();
+  
   account = new FormGroup({
     accountId: new FormControl(''),
     createdAt: new FormControl(''),
@@ -36,8 +38,8 @@ export class AddAccountComponent implements OnInit {
   }
 
   closeModal() {
-    this.http.post(`${environment.apiUrl}/accounts`, this.account.value).subscribe(
-      (response) => console.log(response), //stex stanuma full datan
+    this.http.post(`${environment.apiUrl}/accounts`, <Account> this.account.value).subscribe(
+      (response) => this.newAccount.emit(response),
       (error) => console.log(error)
     );
     this.showModal = false;

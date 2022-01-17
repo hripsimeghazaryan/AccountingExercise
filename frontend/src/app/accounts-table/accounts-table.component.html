@@ -20,4 +20,4 @@
         </tr>
     </ng-template>
   </p-table>
-  <app-add-account></app-add-account>
+  <app-add-account (newAccount)="changeTable($event)"></app-add-account>

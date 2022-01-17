@@ -5,15 +5,6 @@
         <p>New Account</p>
     </ng-template>
     <ng-template pTemplate="body">
-        <!-- <div *ngFor="let item of newAccount | keyvalue">
-            <span>
-                <label>{{item.key}}</label>
-            </span>
-            <span>
-                <input id="float-input" type="text"
-                [(ngModel)]="item.value" pInputText> 
-            </span>
-        </div> -->
         <form [formGroup]="account">
             <span>
                 <label for="account-id">Account Id</label>
@@ -35,7 +26,6 @@
                 <input id="owner" type="text" formControlName="owner">
             </span>
 
-            <!-- To be reviewed -->
             <span>
                 <label for="published">Published</label>
                 <input id="published" type="text" formControlName="published">
@@ -65,7 +55,6 @@
                 <label for="views">Views</label>
                 <input id="views" type="number" formControlName="views">
             </span>
-
         </form>
     </ng-template>
     <ng-template pTemplate="footer">

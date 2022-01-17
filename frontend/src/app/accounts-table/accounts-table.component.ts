@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Account } from '../accounts';
 import { environment } from 'src/environments/environment';
@@ -21,5 +21,9 @@ export class AccountsTableComponent implements OnInit {
     this.http.get<any>(`${environment.apiUrl}/accounts`, requestOptions).subscribe((data) => {
       this.accounts = data;
     });
+  }
+
+  changeTable(result: Account[]) {
+    this.accounts = result;
   }
 }
