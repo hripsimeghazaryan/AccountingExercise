@@ -47,10 +47,9 @@ app.post('/accounts', jsonParser, function (req, res, next) {
       message: 'Invalid request', 
       data: body 
     }) 
-  } else {
-    data.accounts.push(req.body)
-    res.send(data.accounts);
-  }
+  } 
+  data.push(req.body)
+  res.send(data);
 });
 
 app.listen(port, () => {
