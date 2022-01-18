@@ -1,0 +1,23 @@
+<p-table [value]="accounts">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>ID</th>
+            <th>Account Id</th>
+            <th>Created At</th>
+            <th>Owner</th>
+            <th>Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-account>
+        <tr>
+            <td>{{account.id}}</td>
+            <td>{{account.accountId}}</td>
+            <td>{{account.createdAt}}</td>
+            <td>{{account.owner}}</td>
+            <td>
+                <a routerLink="/accounts/{{account.id}}">View</a>
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+  <app-add-account (newAccount)="changeTable($event)"></app-add-account>
