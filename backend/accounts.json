@@ -1,4 +1,4 @@
-exports.accounts = [
+[
 	{
 		"accountId": 36745690,
 		"createdAt": "2016-05-29T07:44:27Z",

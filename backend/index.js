@@ -1,5 +1,5 @@
 const express = require('express')
-const data = require('./accounts')
+const data = require('./accounts.json')
 const app = express()
 const port = 3000
 
@@ -13,12 +13,12 @@ app.use(cors())
 
 app.get('/accounts', (req, res) => {
   res.set('Access-Control-Allow-Origin', '*')
-  res.send(data.accounts)
+  res.send(data)
 })
 
 app.get('/accounts/:id', (req, res) => {
   res.set('Access-Control-Allow-Origin', '*')
-  res.send(data.accounts.filter(x => x.id == req.params.id))
+  res.send(data.filter(x => x.id == req.params.id))
 })
 
 app.post('/accounts', jsonParser, function (req, res, next) {

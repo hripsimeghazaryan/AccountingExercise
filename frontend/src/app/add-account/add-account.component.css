@@ -20,3 +20,16 @@ input {
     width: 100px;
     height: 20px;
 }
+
+:host ::ng-deep .p-inline-message {
+    padding: 0;
+}
+
+:host ::ng-deep .p-inline-message.p-inline-message-error {
+    background-color: transparent;
+    color: #FF0000;
+}
+
+:host ::ng-deep .p-inline-message .p-inline-message-text {
+    font-size: small;
+}
