@@ -5,3 +5,18 @@ form {
 input {
     width: 450px;
 }
+
+.published-checkbox {
+    display: flex;
+    flex-direction: row;
+}
+
+.published-checkbox input {
+    width: auto
+    ;
+}
+
+.div {
+    width: 100px;
+    height: 20px;
+}

@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Account } from '../accounts';
 
-import { FormGroup, FormControl, FormControlName } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-account',
@@ -17,10 +17,10 @@ export class AddAccountComponent implements OnInit {
   @Output() newAccount: EventEmitter<any> = new EventEmitter();
   
   account = new FormGroup({
-    accountId: new FormControl(''),
-    createdAt: new FormControl(''),
-    id: new FormControl(''),
-    owner: new FormControl(''),
+    accountId: new FormControl('', Validators.required),
+    createdAt: new FormControl('', Validators.required),
+    id: new FormControl('', Validators.required),
+    owner: new FormControl('', Validators.required),
     published: new FormControl(''),
     revenue: new FormControl(''),
     spend: new FormControl(''),
@@ -28,6 +28,14 @@ export class AddAccountComponent implements OnInit {
     updatedAt: new FormControl(''),
     views: new FormControl('')
   })
+
+  get accountId() { return this.account.get('accountId'); }
+
+  get createdAt() { return this.account.get('createdAt'); }
+
+  get id() { return this.account.get('id'); }
+
+  get owner() { return this.account.get('owner'); }
 
   constructor(private http: HttpClient) { }
 
@@ -44,7 +52,9 @@ export class AddAccountComponent implements OnInit {
         this.showModal = false;
         this.account.reset();
       },
-      (error) => console.log(error)
+      (error) => {
+        console.log(error)
+      }
     );
   }
 }

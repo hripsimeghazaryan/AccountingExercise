@@ -5,28 +5,52 @@
         <p>New Account</p>
     </ng-template>
     <ng-template pTemplate="body">
-        <form [formGroup]="account">
+        <form [formGroup]="account" #formDir="ngForm">
             <span>
-                <label for="account-id">Account Id</label>
-                <input id="account-id" type="number" formControlName="accountId" pInputText>
+                <label for="accountId">Account Id</label>
+                <input class="form-control"
+                        id="accountId" type="number" formControlName="accountId" pInputText required>
+                <div>
+                    <p-message class="make-small" *ngIf="accountId.invalid && (accountId.dirty || accountId.touched)"
+                    severity="error" text="Field should be filled"></p-message>
+                </div>
+                
             </span>
 
             <span>
-                <label for="created-at">Created At</label>
-                <input id="created-at" type="date" formControlName="createdAt" pInputText>
+                <label for="createdAt">Created At</label>
+                <input class="form-control"
+                        id="createdAt" type="date" formControlName="createdAt" pInputText required>
+                <div>
+                    <p-message *ngIf="createdAt.invalid && (createdAt.dirty || createdAt.touched)" 
+                    severity="error" text="Field should be filled"></p-message>
+                </div>
+
             </span>
 
             <span>
                 <label for="id">ID</label>
-                <input id="id" type="number" formControlName="id" pInputText>
+                <input class="form-control"
+                        id="id" type="number" formControlName="id" pInputText required>
+                <div>
+                    <p-message *ngIf="id.invalid && (id.dirty || id.touched)" 
+                    severity="error" text="Field should be filled"></p-message>
+                </div>
+
             </span>
 
             <span>
                 <label for="owner">Owner</label>
-                <input id="owner" type="text" formControlName="owner" pInputText>
+                <input class="form-control"
+                        id="owner" type="text" formControlName="owner" pInputText required>
+                <div>
+                    <p-message *ngIf="owner.invalid && (owner.dirty || owner.touched)" 
+                    severity="error" text="Field should be filled"></p-message>
+                </div>
+
             </span>
 
-            <span>
+            <span class="published-checkbox">
                 <label for="published">Published</label>
                 <input id="published" type="checkbox" formControlName="published">
             </span>

@@ -42,7 +42,6 @@ app.post('/accounts', jsonParser, function (req, res, next) {
   
   const { value, error } = result; 
   const valid = error == null; 
-
   if (!valid) { 
     res.status(422).json({ 
       message: 'Invalid request', 
